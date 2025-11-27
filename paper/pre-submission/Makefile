@@ -9,7 +9,7 @@ NAME = thesis
 TEXHTML = latex2html
 CC = clang
 
-all: dvi pdf
+all: dvi pdf clean
 
 ps_view: ps
 	$(PS_VIEW) $(NAME).ps
