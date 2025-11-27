@@ -33,4 +33,4 @@ dvi : $(NAME).tex
 	$(LATEX) $(NAME).tex
 
 clean:
-	rm -f $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).dvi $(NAME).lof $(NAME).log $(NAME).lot $(NAME).out.ps $(NAME).pdf $(NAME).toc
+	rm -f $(NAME).aux $(NAME).bbl $(NAME).blg $(NAME).dvi $(NAME).lof $(NAME).log $(NAME).lot $(NAME).out.ps $(NAME).toc
