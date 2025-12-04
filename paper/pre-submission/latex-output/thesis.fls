@@ -168,6 +168,9 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+INPUT latex-output/thesis.aux
+INPUT latex-output/thesis.aux
+INPUT latex-output/thesis.aux
 OUTPUT latex-output/thesis.aux
 INPUT ./src/titlepage.tex
 INPUT ./src/titlepage.tex
@@ -230,8 +233,18 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT latex-output/thesis.toc
+INPUT latex-output/thesis.toc
+INPUT latex-output/thesis.toc
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 OUTPUT latex-output/thesis.toc
+INPUT latex-output/thesis.lof
+INPUT latex-output/thesis.lof
+INPUT latex-output/thesis.lof
 OUTPUT latex-output/thesis.lof
+INPUT latex-output/thesis.lot
+INPUT latex-output/thesis.lot
+INPUT latex-output/thesis.lot
 OUTPUT latex-output/thesis.lot
 INPUT ./src/1_introduction.tex
 INPUT ./src/1_introduction.tex
@@ -243,7 +256,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./src/2_background.tex
 INPUT ./src/2_background.tex
