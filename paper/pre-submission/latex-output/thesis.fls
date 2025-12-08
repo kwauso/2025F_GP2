@@ -258,6 +258,7 @@ INPUT ./src/3_issue.tex
 INPUT ./src/3_issue.tex
 INPUT ./src/3_issue.tex
 INPUT src/3_issue.tex
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsl12.tfm
 INPUT ./src/4_proposed.tex
 INPUT ./src/4_proposed.tex
 INPUT ./src/4_proposed.tex
