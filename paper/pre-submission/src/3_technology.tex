@@ -105,7 +105,7 @@ DIDsは単体では識別子に過ぎないため、DIDsに関するより詳細
 \begin{figure}[h]
     \centering
     \includegraphics[width=150mm]{src/public/didarchitecture.png}
-    \caption{DIDのエコシステム}
+    \caption{DIDsのエコシステム}
 \end{figure}
 \subsection{選択的開示}
 VCsやDIDsの文脈で重要な機能の一つが、選択的開示である。
@@ -114,4 +114,8 @@ VCsやDIDsの文脈で重要な機能の一つが、選択的開示である。
 選択的開示を用いることで、HolderはVerifierに対して必要以上の情報を開示することがなくなり、Holderのプライバシーを保護することにつながる。
 選択的開示の具体的なアルゴリズムとしては、Selective Disclosure for JWTs(SD-JWT)や、ゼロ知識証明を用いたものなどが提案されている。
 \subsection{ウォレットアプリケーション}
+IHVモデルにおいて、HolderがVCsなどのデジタル証明書を保持するには、何らかの器が必要である。
+そこで登場するのがウォレットアプリケーションであり、Holderが複数のIssuerから発行された多様なデジタル証明書を格納し、自在に組み合わせてVerifierに提示するのに用いられる。
 \section{本章のまとめ}
+本章では、基盤技術としてデジタル証明書とその構成技術について紹介した上で、デジタル証明書の一形態であるVCsとそれに関連した一連の技術についても紹介した。
+次章では、既存サービスにおける問題点について議論する。
