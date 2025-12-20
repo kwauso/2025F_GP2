@@ -1,8 +1,9 @@
 \chapter{基盤技術}
 \label{technology}
-本章では、提案するシステムで用いる基盤技術について解説する。
+本章では、提案するシステムで用いる基盤技術について紹介する。
 
 \section{デジタル証明書と構成技術}
+本節では、本研究におけるデジタル証明書の定義と、その構成技術について解説する。
 \subsection{デジタル証明書}
 通常、デジタル証明書は公開鍵と公開鍵の所有者を紐づけ、公開鍵の真正性を示す証明書を指すことが一般的だが、本研究では、ある主体に対する証明書発行者の主張を表現したデジタルデータと定義する。
 これらの主張には身分証明に関する個人情報から資格情報、ひいては大学の成績など多様な情報が含むことができ、デジタル証明書はこれらの情報を電子的に表現した上で第三者に対する提示・検証を可能とするための手段である。
@@ -49,7 +50,38 @@
     \end{enumerate}
 \end{itemize}
 \section{Verifiable CredentialsとDecentralized Identifiers}
+本節では、デジタル証明書の一形態であるVerifiable Credentialsと、それを支える識別子であるDecentralized Identifiersについて解説した後、デジタル証明書の文脈で重要な機能である選択的開示と、アプリケーションとして欠かせないウォレットアプリケーションについても解説する。
 \subsection{Verifiable Credentials}
+前節で解説したデジタル証明書の一つの形態として、Verifiable Credentialsがある。
+Verifiable CredentialsはW3Cが標準化を進めており、一般的にVerifiable CredentialsといえばW3Cによる``W3C VC''を指す。
+Verifiable Credentialsはデジタル証明書そのものであり、Verifiable CredentialsのためのデータモデルとしてVerifiable Credentials Data Modelが存在する。
+広義のVerifiable Credentialsとして、ISO/IEC 18013-5で定義されたmdoc/mDLや、IETFが標準化を進めるSD-JWT VCなども存在するが本稿では詳しくは触れない。
+なお、Verifiable Credentialsは``VCs''、Verifiable Credentials Data Modelは``VCDM''と呼ばれることが一般的なため、本稿でもこれ以降この呼称を用いる。
+\\
+　VCsとは、検証可能な証明書のことであり、暗号学的な手法で改ざん検知、および正当に発行されたものであるかの検証を可能にしたクレデンシャルのことである。
+クレデンシャルとは、発行者によって発行された、対象となる主体に対する何らかの主張（クレームと呼ばれる）の組と定義される。
+例えば、髪が黒く、眼鏡をかけた男性がいた場合、クレームは「髪が黒い」「眼鏡をかけている」「男性である」の3つとなり、これをまとめたものがクレデンシャルとなる。
+さらにこのクレデンシャルを暗号学的に改ざん検知、正当に発行されたものであるか検証できるようにしたものがVCs、といったイメージである。
+\\
+　VCsの基本的は構造は、発行者（Issuer）、保持者（Holder）、検証者（Verifier）という三者の役割分担を前提としている。
+なお、この三者が登場するモデルはIHVモデルと呼ばれる。
+VCsの発行から検証までの一連の流れは下記の通りである。
+\begin{enumerate}
+    \item 発行：発行者が特定の主体（Subjectと呼ばれる）に関するクレデンシャルを用意し、暗号学的な署名を施す。完成したら、Holderに送信する。多くの場合SubjectとHolderは一致するが、異なっても構わない
+    \item 保持・提示：Issuerから送信されたVCsを受け取り、後述するウォレットアプリケーションなどに保持する。任意のタイミングでVerifierにVCsを提示する
+    \item 検証：VerifierはHolderから送信されたVCsから検証に必要な公開鍵情報を取り出し、公開鍵を用意した上でVCsを検証する
+\end{enumerate}
+また、各主体はデータをVerifiable Data Registryと呼ばれるデータ保管場所とやり取りする。
+一連の役割分担を示したのが下図である。
+\begin{figure}[htbp]
+    \includegraphics[width=150mm]{src/public/ecosystemofvc.png}
+    \caption{VCsにおけるIHVモデル}
+\end{figure}
+\\
+　また、Holderが複数のVCsを保持し、場合によってはまとめてVerifierに提示するユースケースがあることは容易に考えられる。
+そのため、VCsには複数のVCsを合わせて提示するVerifiable Presentationsという形式も存在する。
+Verifiable Presentationsには、そのVerifiable Presentationsが正しく構成されていることを示す証明と、提示者がHolderであることを示す証明が含まれる。
+なお、Verifiable Presentationsも``VP''と一般的に呼ばれるため、本稿でもこれ以降この呼称を用いる。
 \subsection{Decentralized Identifiers}
 \subsection{選択的開示}
 \subsection{ウォレットアプリケーション}
