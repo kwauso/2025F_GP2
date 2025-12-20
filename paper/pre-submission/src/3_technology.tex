@@ -73,9 +73,9 @@ VCsの発行から検証までの一連の流れは下記の通りである。
 \end{enumerate}
 また、各主体はデータをVerifiable Data Registryと呼ばれるデータ保管場所とやり取りする。
 一連の役割分担を示したのが下図である。
-\begin{figure}[htbp]
+\begin{figure}[h]
     \includegraphics[width=150mm]{src/public/ecosystemofvc.png}
-    \caption{VCsにおけるIHVモデル}
+    \caption{VCsにおけるIHVモデルと仕組み}
 \end{figure}
 \\
 　また、Holderが複数のVCsを保持し、場合によってはまとめてVerifierに提示するユースケースがあることは容易に考えられる。
@@ -83,6 +83,30 @@ VCsの発行から検証までの一連の流れは下記の通りである。
 Verifiable Presentationsには、そのVerifiable Presentationsが正しく構成されていることを示す証明と、提示者がHolderであることを示す証明が含まれる。
 なお、Verifiable Presentationsも``VP''と一般的に呼ばれるため、本稿でもこれ以降この呼称を用いる。
 \subsection{Decentralized Identifiers}
+Decentralized Identifiersは識別子の一種であり、ブロックチェーンなどの分散型台帳技術と紐づけられる。
+従来のアイデンティティ管理システムで用いられるようなIDとは異なり、中央集権的な構造を持たないため異なるシステム間で相互運用性を持たせられたり、IDを自己管理できたりするというメリットがある。
+先述したVCsでも各主体の識別子としてはDecentralized Identifiersが用いられることがほとんどである。
+なお、Decentralized Identifiersは一般的には``DIDs''と呼ばれるため、本稿でもこれ以降この呼称を用いる。
+\\
+　DIDs自体は下図のような構造を持つ。
+``Scheme''はこの識別子がDIDsであることを示す。
+``DID Method''はこのDIDsがどのタイプのDIDsであるかを示すもので、主にDID document（後述）の置き場所により多くの種類が存在し、代表的なものではdid:web, did:key, did:ionなどが挙げられる。
+``DID Method-Specific Identifier''はDIDメソッドの名前空間内での一意な識別子である。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=100mm]{src/public/did.png}
+    \caption{DIDsの例}
+\end{figure}
+\\
+　また、DIDsは下図のようなエコシステムを持つ。
+DIDsは単体では識別子に過ぎないため、DIDsに関するより詳細な情報を記載したデータとして``DID document''が存在し、さらにDID documentを補助する役割を果たす``DID controller''と``DID URL''が存在する。
+``Verifiable Data Registry''はDIDs, DID documentの置き場所として利用され、ブロックチェーンなどの分散型台帳技術が用いられることが多い。
+なお、DIDsからDID documentを引くことを``resolve''といい、本稿ではこれ以降「解決する」と呼称する。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=150mm]{src/public/didarchitecture.png}
+    \caption{DIDのエコシステム}
+\end{figure}
 \subsection{選択的開示}
 \subsection{ウォレットアプリケーション}
 \section{本章のまとめ}
