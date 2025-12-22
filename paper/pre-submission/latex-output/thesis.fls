@@ -330,7 +330,11 @@ INPUT ./src/acknowledgement.tex
 INPUT ./src/acknowledgement.tex
 INPUT ./src/acknowledgement.tex
 INPUT src/acknowledgement.tex
-OUTPUT latex-output/thesis.out.ps
+INPUT ./src/appendix.tex
+INPUT ./src/appendix.tex
+INPUT ./src/appendix.tex
+INPUT ./src/appendix.tex
+INPUT src/appendix.tex
 INPUT ./bib/biblio.tex
 INPUT ./bib/biblio.tex
 INPUT ./bib/biblio.tex
@@ -339,4 +343,5 @@ INPUT bib/biblio.tex
 INPUT latex-output/thesis.bbl
 INPUT latex-output/thesis.bbl
 INPUT latex-output/thesis.bbl
+OUTPUT latex-output/thesis.out.ps
 INPUT latex-output/thesis.aux
