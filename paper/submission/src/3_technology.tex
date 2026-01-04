@@ -90,7 +90,7 @@ Decentralized Identifiersは識別子の一種であり、ブロックチェー�
 \\
 　DIDs自体は下図のような構造を持つ。
 ``Scheme''はこの識別子がDIDsであることを示す。
-``DID Method''はこのDIDsがどのタイプのDIDsであるかを示すもので、主にDID document（後述）の置き場所により多くの種類が存在し、代表的なものではdid:web, did:key, did:ionなどが挙げられる\cite{did-web}\cite{did-key}\cite{did-ion}。
+``DID Method''はこのDIDsがどのタイプのDIDsであるかを示すもので、主にDID Document（後述）の置き場所により多くの種類が存在し、代表的なものではdid:web, did:key, did:ionなどが挙げられる\cite{did-web}\cite{did-key}\cite{did-ion}。
 ``DID Method-Specific Identifier''はDIDメソッドの名前空間内での一意な識別子である。
 \begin{figure}[h]
     \centering
@@ -99,8 +99,8 @@ Decentralized Identifiersは識別子の一種であり、ブロックチェー�
 \end{figure}
 \\
 　また、DIDsは下図のようなエコシステムを持つ。
-DIDsは単体では識別子に過ぎないため、DIDsに関するより詳細な情報を記載したデータとして``DID document''が存在し、さらにDID documentを補助する役割を果たす``DID controller''と``DID URL''が存在する。
-``Verifiable Data Registry''はDIDs, DID documentの置き場所として利用され、ブロックチェーンなどの分散型台帳技術が用いられることが多い。
+DIDsは単体では識別子に過ぎないため、DIDsに関するより詳細な情報を記載したデータとして``DID Document''が存在し、さらにDID Documentを補助する役割を果たす``DID Controller''と``DID URL''が存在する。
+``Verifiable Data Registry''はDIDs, DID Documentの置き場所として利用され、ブロックチェーンなどの分散型台帳技術が用いられることが多い。
 なお、DIDsからDID documentを引くことを``resolve''といい、本稿ではこれ以降\textbf{解決する}と呼称する。
 \begin{figure}[h]
     \centering
