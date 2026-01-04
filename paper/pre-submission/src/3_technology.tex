@@ -1,6 +1,6 @@
 \chapter{基盤技術}
 \label{technology}
-本章では、提案するシステムで用いる基盤技術について紹介する。
+本章では、提案するシステムの基盤となる技術について紹介する。
 
 \section{デジタル証明書と構成技術}
 本節では、本研究におけるデジタル証明書の定義と、その構成技術について解説する。
@@ -17,7 +17,7 @@
 \end{itemize}
 これらの要素はデジタル証明書のデータモデルに従い表現され、様々な標準化団体が多様なデータモデルを提案している。
 その一例である、W3CによるVerifiable Credentials Data Modelについては後述する。
-また、デジタル証明書はシリアライズされてデジタルデータに変換されるが、代表的なシリアライズ形式としてはJSON, CBORなどがある。
+また、デジタル証明書はシリアライズされてデジタルデータに変換されるが、代表的なシリアライズ形式としてはJSON, CBORなどがある\cite{rfc8259}\cite{rfc8949}。
 \subsection{暗号学的ハッシュ関数}
 ハッシュ関数とは、任意の長さのデータから要約された値（ハッシュ値）を得る関数であり、特に暗号や情報セキュリティの用途に適した性質を持つものを暗号学的ハッシュ関数と呼ぶ。
 同じ入力値からは常に同じハッシュ値を得られ、またハッシュ値から入力値を計算することは困難であるという性質がある。
@@ -32,7 +32,7 @@
 公開鍵暗号は、暗号化と復号で異なる2つの鍵を使用する暗号方式である。
 2つの鍵はそれぞれ秘密鍵と公開鍵と呼ばれ、秘密鍵はその所有者によって秘密を保って管理される鍵であり、秘密鍵と対になる公開鍵は広く公開され、他人が利用可能な鍵である。
 公開鍵暗号は広く用いられており、例えばインターネット上の通信を保護するためのプロトコルであるSSL/TLSで利用されている。
-公開鍵暗号の代表的なアルゴリズムとしては、RSA(Rivest-Shamir-Adleman)、DSA(Digital Signature Algorithm)、ECDSA(Elliptic Curve Digital Signature Algorithm)などが挙げられる。
+公開鍵暗号の代表的なアルゴリズムとしては、RSA(Rivest-Shamir-Adleman)、DSA(Digital Signature Algorithm)、ECDSA(Elliptic Curve Digital Signature Algorithm)などが挙げられる\cite{fips186-5}。
 \subsection{デジタル署名}
 デジタル署名は、あるデジタルデータが特定の主体により作成されたこと、かつ作成されたのちに改ざんされていないことを検証可能にするための技術である。
 デジタル署名は、以下のプロセスで作成・検証される。
@@ -50,12 +50,12 @@
     \end{enumerate}
 \end{itemize}
 \section{Verifiable CredentialsとDecentralized Identifiers}
-本節では、デジタル証明書の一形態であるVerifiable Credentialsと、それを支える識別子であるDecentralized Identifiersについて解説した後、デジタル証明書の文脈で重要な機能である選択的開示と、アプリケーションとして欠かせないウォレットアプリケーションについても解説する。
+本節では、デジタル証明書の一形態であるVerifiable Credentials\cite{w3c-vcdm}と、それを支える識別子であるDecentralized Identifiers\cite{w3c-did}について解説した後、デジタル証明書の文脈で重要な機能である選択的開示と、アプリケーションとして欠かせないウォレットアプリケーションについても解説する。
 \subsection{Verifiable Credentials}
 前節で解説したデジタル証明書の一つの形態として、Verifiable Credentialsがある。
 Verifiable CredentialsはW3Cが標準化を進めており、一般的にVerifiable CredentialsといえばW3Cによる``W3C VC''を指す。
 Verifiable Credentialsはデジタル証明書そのものであり、Verifiable CredentialsのためのデータモデルとしてVerifiable Credentials Data Modelが存在する。
-広義のVerifiable Credentialsとして、ISO/IEC 18013-5で定義されたmdoc/mDLや、IETFが標準化を進めるSD-JWT VCなども存在するが本稿では詳しくは触れない。
+広義のVerifiable Credentialsとして、ISO/IEC 18013-5で定義されたmdoc/mDL\cite{iso18013-5-2021}や、IETFが標準化を進めるSD-JWT VC\cite{sd-jwt-vc-draft}なども存在するが本稿では詳しくは触れない。
 なお、Verifiable Credentialsは``VCs''、Verifiable Credentials Data Modelは``VCDM''と呼ばれることが一般的なため、本稿でもこれ以降この呼称を用いる。
 \\
 　VCsとは、検証可能な証明書のことであり、暗号学的な手法で改ざん検知、および正当に発行されたものであるかの検証を可能にしたクレデンシャルのことである。
@@ -90,7 +90,7 @@ Decentralized Identifiersは識別子の一種であり、ブロックチェー�
 \\
 　DIDs自体は下図のような構造を持つ。
 ``Scheme''はこの識別子がDIDsであることを示す。
-``DID Method''はこのDIDsがどのタイプのDIDsであるかを示すもので、主にDID document（後述）の置き場所により多くの種類が存在し、代表的なものではdid:web, did:key, did:ionなどが挙げられる。
+``DID Method''はこのDIDsがどのタイプのDIDsであるかを示すもので、主にDID document（後述）の置き場所により多くの種類が存在し、代表的なものではdid:web, did:key, did:ionなどが挙げられる\cite{did-web}\cite{did-key}\cite{did-ion}。
 ``DID Method-Specific Identifier''はDIDメソッドの名前空間内での一意な識別子である。
 \begin{figure}[h]
     \centering
@@ -108,11 +108,11 @@ DIDsは単体では識別子に過ぎないため、DIDsに関するより詳細
     \caption{DIDsのエコシステム}
 \end{figure}
 \subsection{選択的開示}
-VCsやDIDsの文脈で重要な機能の一つが、選択的開示である。
+VCsやDIDsの文脈で重要な機能の一つが、選択的開示である\cite{ramic2024selective}。
 選択的開示とは、HolderがVerifierに証明書を提示する際、開示する内容をコントロールできる機能である。
 例えば、20歳以上であることを示しアルコール飲料を購入するユースケースでは、従来ならば運転免許証などを全て開示していたが、選択的開示を用いることで顔写真と年齢の欄のみを開示すればよくなる。
 選択的開示を用いることで、HolderはVerifierに対して必要以上の情報を開示することがなくなり、Holderのプライバシーを保護することにつながる。
-選択的開示の具体的なアルゴリズムとしては、Selective Disclosure for JWTs(SD-JWT)や、ゼロ知識証明を用いたものなどが提案されている。
+選択的開示の具体的なアルゴリズムとしては、Selective Disclosure for JWTs(SD-JWT)\cite{rfc9901}や、ゼロ知識証明を用いたものなどが提案されている。
 \subsection{ウォレットアプリケーション}
 IHVモデルにおいて、HolderがVCsなどのデジタル証明書を保持するには、何らかの器が必要である。
 そこで登場するのがウォレットアプリケーションであり、Holderが複数のIssuerから発行された多様なデジタル証明書を格納し、自在に組み合わせてVerifierに提示するのに用いられる。
