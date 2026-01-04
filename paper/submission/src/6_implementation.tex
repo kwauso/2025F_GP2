@@ -2,6 +2,20 @@
 \label{implementation}
 本章では、第5章で提案したシステムの概念実証としての実装について述べる。
 
+\lstnewenvironment{mylisting}[1][]
+    {\lstset{
+        frame=single,
+        basicstyle=\ttfamily,
+        numbers=left,
+        numbersep=10pt,
+        tabsize=2,
+        extendedchars=true,
+        xleftmargin=17pt,
+        framexleftmargin=17pt,
+        #1
+    }
+}{}
+
 %%% Local Variables:
 %%% mode: japanese-latex
 %%% TeX-master: "../bthesis"
@@ -12,39 +26,89 @@
 実装するのは自動車アプリケーション、モバイルアプリケーション、検証者アプリケーションの3つであるが、自動車アプリケーションに関しては実際の自動車上で動作する車載アプリケーションを開発することは大きな労力を要するため、車載アプリケーションをエミュレートする形で実装した。
 また、実際に自動車からデータを抽出するのではなく実際のデータを模したテストデータを利用した。
 なお、この実装は提案手法の概念実証として行い、提案するシステムが十分に実現可能であるかどうかを検証することを目的としているため、提案システムのコアの部分、すなわちデータの真正性の担保とコントロール可能性の両立を実現する役割を持つコンポーネントを主に実装している。
-\subsection{機能要件}
-実装にあたり、それぞれのアプリケーションの機能要件については、以下とする。
-\begin{enumerate}
-    \item 自動車アプリケーション \newline
-        ・基盤内の鍵ペアを用い、モバイルアプリケーションとの間の信頼できる通信経路の確立 \newline
-        ・自動車内の各センサから取得した情報をデータ辞書に基づいてVCに加工し、モバイルアプリケーションへ送信
-    \item モバイルアプリケーション \newline
-        ・自動車との間の信頼できる通信経路の確立 \newline
-        ・自動車から送信されたVCをウォレットアプリケーションに蓄積し、VPを構成 \newline
-        ・VPを検証者に提示
-    \item 検証者アプリケーション \newline
-        ・受信したVPを確認してその有効性及び真正性を検証し、データを取り出す
-\end{enumerate}
+\subsection{技術スタック}
+実装にあたっての技術スタックとしては、以下を用いた。
+\begin{table}[h]
+    \centering
+    \caption{使用した技術スタック}
+    \label{stack}
+    \begin{tabular}{ll}
+        \hline
+        \hline
+        要素 & 要素名 \\
+        \hline
+        言語 & TypeScript \\
+        VCs/VPライブラリ & @trustknots/vcknots \\
+        DIDメソッド & did:web \\
+        ハッシュアルゴリズム & SHA-256 \\
+        \hline
+    \end{tabular}
+\end{table}
+\\
+　また、did:webに対応したwebサイトとして、\verb|https://did.eunos.tech/|を用いた。
+\subsection{データモデル}
+データモデルには、第5章で提案したように速度、加速度、回転角速度、ステアリング角度が含まれる。
+実際の型定義としては、以下のように定義している。
+\begin{mylisting}[language=c++,caption=データモデルの型定義]
+interface SensorData {
+  timestamp: number;        // タイムスタンプ
+  speed: number;           // km/h
+  acceleration: number;    // m/s^2
+  yawRate: number;         // rad/s
+  steeringAngle: number;   // 度（°）
+}
+\end{mylisting}
+\section{各アプリケーションの実装}
+\subsection{自動車アプリケーション}
+前述の通り、実際の車載アプリケーションを実装するのは大きな労力を要するため、車載アプリケーションをエミュレートする形で実装している。
+自動車アプリケーションは以下の機能を持つ。
+なお、それぞれのそれぞれのコードスニペットや型定義については、付録を参照されたい。
 \begin{description}
-    \item[\textbf{自動車アプリケーション}]
-    テストデータを基にVCsを発行し、VCを発行する
-    \item[\textbf{モバイルアプリケーション}]
-    VCsを受け取って蓄積し、VPを構成した上で提示する
-    \item[\textbf{検証者アプリケーション}]
-    提示されたVPからDIDsを取得した上でDID Documentを解決し、VPを検証する
+    \item[\textbf{SHA-256ハッシュチェーンの生成}]
+    今回の実装ではサンプルデータを用いるが、サンプルデータを1秒ごとにハッシュチェーンに連結する。
+    前提として、VCsはログではなく、主張の束である。
+    速度、加速度、回転角速度、ステアリング角度といった自動車から取得されるこれらのデータは膨大なログであり、そのまま生でVCsに含むのは計算量的にも設計的にも不適切である。
+    しかしながら、ログ自体の完全性を担保する必要もあるため、今回はハッシュチェーンを採用した。
+    \item[\textbf{データの集約}]
+    VCsを作成するために、60秒間のデータを1つのセグメントとして扱い、それぞれのデータにつき平均値、最大値、最小値を算出する。
+    データの完全性はハッシュチェーンの始まりと終わりをセグメントに含めることで担保する。
+    \item[\textbf{VCsの発行}]
+    データを集約し、セグメントごとのデータの平均値、最大値、最小値を主張としてVCsを発行する。
+    なお、発行されるVCsは、W3C Verifiable Credentials標準に準拠した構造を持つ。
 \end{description}
-\subsection{システム構成}
-全体のシステム構成は以下である。
-\subsection{全体の開発環境}
-実装にあたり、開発環境は以下を用いた。
-\section{データモデル}
-データモデルは第5章で提案したものを用いる。
-\subsection{実装に用いたテストデータ}
-\section{自動車アプリ}
-実装にあたり、自動車アプリケーションはRaspberry Piを用いたエミュレータとして実装した。
-\section{モバイルアプリ}
-実装にあたり、モバイルアプリケーションはFlutterを用いて実装した。
-\section{検証者アプリ}
-実装にあたり、検証者アプリケーションはTypescriptを用いて実装した。
-\section{VC生成・署名の方式}
+　モバイルとの通信経路の確立や状態管理、VCsの失効リストの管理を行う機能は実装していない。
+なお、VCsの送信・受信に関しては、アプリケーション内の関数を用いることでを可能となっている。
+\subsection{モバイルアプリケーション}
+モバイルアプリケーションは以下の機能を持つ。
+\begin{description}
+    \item[\textbf{VCsの受信と保存}]
+    VCsを受け取り、データとして保存する。
+    今回の実装では、JSONファイルを簡易的にデータの保存場所として扱っている。
+    \item[\textbf{VPの構成}]
+    HolderのDIDsを取得し、受け取ったVCsをもとにVPを構成する。
+    なお、VCsと同様、VPもW3C Verifiable Presentations標準に準拠した構造を持つ。
+    \item[\textbf{VPの提示}]
+    構成したVPを検証者に提示する。
+\end{description}
+VP構成の状態管理、検証者との間の通信経路の確立を行う機能は実装していない。
+また、選択的開示についても特に実装は行っていない。
+\subsection{検証者アプリケーション}
+検証者アプリケーションは、実際の事業者により多様な形を取り得るが、共通する以下の機能を持つ。
+\begin{description}
+    \item[\textbf{VPの受信}]
+    VPを受け取り、データとして保存する。
+    今回の実装では、JSONファイルを簡易的にデータの保存場所として扱っている。
+    \item[\textbf{DIDsの解決}]
+    受け取ったVPから含まれるDIDsを抜き出し、DID Documentを解決する。
+    did:webは、DID DocumentをWebサーバー上にホストするDIDメソッドであり、解決は\verb|did:web:<domain>:<path>|といったルールに従う。
+    今回は\verb|https://did.eunos.tech/|を用いているため、解決先は\verb|did:web:did.eunos.tech:<path>|となる。
+    なお、解決されるDIDsはVPの\verb|holder|フィールドと\verb|Issuer|フィールドに含まれる2つである。
+    \item[\textbf{VPおよび含まれるVCsの検証}]
+    まずVPの構造を検証し、HolderのDIDsを解決してVPの署名を検証する。
+    次にIssuerのDIDsを解決してVCsの署名を検証する。
+    このようにしてVPおよびVCsの検証を行う。
+\end{description}
+VPおよび含まれるVCsの失効チェック、有効期限チェックを行う機能は実装していない。
 \section{本章のまとめ}
+本章では、第5章で提案した手法の概念実証を行うべくシステムを実装した。
+次章では、提案システムに対する評価を行う。

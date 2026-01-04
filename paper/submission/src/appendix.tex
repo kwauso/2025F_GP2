@@ -1,7 +1,74 @@
 \appendix
 \chapter{付録}
 
-
+\section{実装のコードスニペット}
+以下は実装のコードスニペットである。
+\begin{mylisting}[language=c++,caption=ハッシュチェーンの生成アルゴリズム]
+hash_i = SHA256(
+    prevHash (32 bytes) ||
+    timestamp (8 bytes, big-endian double) ||
+    speed (8 bytes, big-endian double) ||
+    acceleration (8 bytes, big-endian double) ||
+    yawRate (8 bytes, big-endian double) ||
+    steeringAngle (8 bytes, big-endian double)
+)
+\end{mylisting}
+\begin{mylisting}[language=c++,caption=セグメントの型定義]
+interface Segment {
+    segmentStartTime: string;      // タイムスタンプ
+    durationSec: number;
+    aggregatedMetrics: {
+        speed: { avg, max, min },
+        acceleration: { avg, max, min },
+        yawRate: { avg, max, min },
+        steeringAngle: { avg, max, min }
+    };
+    hashChain: {
+        start: string;  // セグメントの最初のハッシュ
+        end: string;    // セグメントの最後のハッシュ
+    };
+}
+\end{mylisting}
+\begin{mylisting}[language=c++,caption=発行されるVCsの型定義]
+interface DrivingEvaluationCredential {
+    id?: string;
+    "@context": string[];
+    type: string[];
+    issuer: string;              // 発行者のDIDs
+    issuanceDate: string;
+    credentialSubject: {
+        id?: string;               // 被発行者のDIDs
+        segmentStartTime: string;
+        durationSec: number;
+        aggregatedMetrics: AggregatedMetrics;
+        hashChain: HashChain;
+    };
+    proof: {
+        type: string;
+        created: string;
+        verificationMethod: string;
+        proofPurpose: string;
+        jws?: string;
+        proofValue?: string;
+    };
+    }
+\end{mylisting}
+\begin{mylisting}[language=c++,caption=発行されるVPの型定義]
+interface VerifiablePresentation {
+    "@context": string[];
+    type: string[];
+    holder: string;                    // HolderのDIDs
+    verifiableCredential: DrivingEvaluationCredential[];  // 含まれるVCs
+    proof: {
+        type: string;
+        created: string;
+        verificationMethod: string;
+        proofPurpose: string;
+        jws?: string;
+        proofValue?: string;
+    };
+    }
+\end{mylisting}
 \section{STRIDEによる脅威分析の結果}
 第7章でSTRIDEによる脅威分析を行った。
 以下はその結果を信頼境界ごとに示した表である。
@@ -31,7 +98,6 @@
         \hline
     \end{tabular}
 \end{table}
-
 \begin{table}[h]
     \centering
     \caption{モバイルにおける脅威}
@@ -58,7 +124,6 @@
         \hline
     \end{tabular}
 \end{table}
-
 \begin{table}[h]
     \centering
     \caption{検証者における脅威}
