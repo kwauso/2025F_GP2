@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.euc) (TeX Live 2024) (preloaded format=platex 2025.1.23)  4 JAN 2026 15:32
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.euc) (TeX Live 2024) (preloaded format=platex 2025.1.23)  4 JAN 2026 21:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -365,7 +365,8 @@ File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
 \g__pdf_backend_annotation_int=\count315
 \g__pdf_backend_link_int=\count316
 \g__pdf_backend_link_sf_int=\count317
-) (latex-output/thesis.aux)
+)
+No file thesis.aux.
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
@@ -391,6 +392,9 @@ LaTeX Font Info:    ... okay on input line 97.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 97.
 LaTeX Font Info:    ... okay on input line 97.
 Package hyperref Info: Link coloring OFF on input line 97.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 \c@lstlisting=\count318
 (./src/titlepage.tex
 
@@ -415,49 +419,33 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <24.88> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 112.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <24.88> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 112.
-(latex-output/thesis.toc
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 1.
+No file thesis.toc.
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
+
 
 
 [3
 
 
 ]
-
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sl' undefined
-(Font)              No change on input line 70.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.49998pt}.
-
-[4])
-\tf@toc=\write4
-\openout4 = `thesis.toc'.
-
-
-
-[5] (latex-output/thesis.lof)
+No file thesis.lof.
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
 
 
-[6
+[4
 
 
-] (latex-output/thesis.lot)
+]
+No file thesis.lot.
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
 
 
-[7
+[5
 
 
 ] (./src/1_introduction.tex
@@ -466,6 +454,10 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 6.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 6.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 10.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 10.
 
 Package natbib Warning: Citation `sato2009internetcar' on page 1 undefined on input line 10.
 
@@ -474,7 +466,35 @@ Package natbib Warning: Citation `sato2009internetcar' on page 1 undefined on in
 [1
 
 
-]) (./src/2_background.tex
+]
+
+LaTeX Warning: Reference `background' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Reference `technology' on page 2 undefined on input line 28.
+
+
+LaTeX Warning: Reference `issue' on page 2 undefined on input line 29.
+
+
+LaTeX Warning: Reference `proposed' on page 2 undefined on input line 30.
+
+
+LaTeX Warning: Reference `implementation' on page 2 undefined on input line 31.
+
+
+LaTeX Warning: Reference `proposed' on page 2 undefined on input line 31.
+
+
+LaTeX Warning: Reference `evaluation' on page 2 undefined on input line 32.
+
+
+LaTeX Warning: Reference `issue' on page 2 undefined on input line 32.
+
+
+LaTeX Warning: Reference `conclusion' on page 2 undefined on input line 33.
+
+) (./src/2_background.tex
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sl' undefined
 (Font)              No change on input line 1.
@@ -544,9 +564,15 @@ Package natbib Warning: Citation `rfc8949' on page 6 undefined on input line 20.
 Package natbib Warning: Citation `fips186-5' on page 7 undefined on input line 35.
 
 
+Package natbib Warning: Citation `w3c-vcdm' on page 7 undefined on input line 53.
+
+
+Package natbib Warning: Citation `w3c-did' on page 7 undefined on input line 53.
+
+
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sl' undefined
-(Font)              No change on input line 49.
+(Font)              No change on input line 54.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.49998pt, for example:
@@ -556,21 +582,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7]
 
-Package natbib Warning: Citation `w3c-vcdm' on page 8 undefined on input line 53.
-
-
-Package natbib Warning: Citation `w3c-did' on page 8 undefined on input line 53.
-
-
 Package natbib Warning: Citation `iso18013-5-2021' on page 8 undefined on input line 58.
 
 
 Package natbib Warning: Citation `sd-jwt-vc-draft' on page 8 undefined on input line 58.
 
+File: src/public/ecosystemofvc.png Graphic file (type bmp)
+<src/public/ecosystemofvc.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sl' undefined
-(Font)              No change on input line 72.
+(Font)              No change on input line 85.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.49998pt, for example:
@@ -579,8 +604,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.49998pt}.
 
 [8]
-File: src/public/ecosystemofvc.png Graphic file (type bmp)
-<src/public/ecosystemofvc.png>
 
 Package natbib Warning: Citation `did-web' on page 9 undefined on input line 93.
 
@@ -594,9 +617,6 @@ File: src/public/did.png Graphic file (type bmp)
 <src/public/did.png>
 File: src/public/didarchitecture.png Graphic file (type bmp)
 <src/public/didarchitecture.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sl' undefined
@@ -618,7 +638,7 @@ Package natbib Warning: Citation `rfc9901' on page 10 undefined on input line 11
 
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sl' undefined
-(Font)              No change on input line 116.
+(Font)              No change on input line 119.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 16.49998pt, for example:
@@ -895,9 +915,6 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./bib/biblio.tex (latex-output/thesis.bbl
 
-\BKM@file=\write7
-\openout7 = `thesis.out.ps'.
-
 [31
 
 ]
@@ -912,27 +929,31 @@ Package natbib Warning: There were undefined citations.
 
 
 
+\BKM@file=\write7
+\openout7 = `thesis.out.ps'.
+
 [33
 
-]
-
-LaTeX Warning: Hook 'shipout/lastpage' executed on wrong page (39 not 41).
-               Rerun to correct this.
-
-(latex-output/thesis.aux)
+] (latex-output/thesis.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
  ***********
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 12317 strings out of 473869
- 191201 string characters out of 5731720
- 781948 words of memory out of 5000000
- 35324 multiletter control sequences out of 15000+600000
+ 12305 strings out of 473869
+ 190925 string characters out of 5731720
+ 780948 words of memory out of 5000000
+ 35320 multiletter control sequences out of 15000+600000
  575889 words of font info for 105 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 72i,12n,79p,1989b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,11n,79p,1989b,529s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on latex-output/thesis.dvi (41 pages, 157592 bytes).
+Output written on latex-output/thesis.dvi (39 pages, 118800 bytes).
