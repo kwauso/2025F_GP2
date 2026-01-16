@@ -8,7 +8,7 @@
 \contentsline {subsection}{\numberline {2.2.2}テレマティクスの活用事例}{4}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}コネクティッドカーの発展と展望}{4}{subsection.2.2.3}%
 \contentsline {section}{\numberline {2.3}車両データを用いるサービス}{4}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}利用ベース保険（UBI）}{4}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.1}利用ベース保険}{4}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}カーシェアリングサービス}{5}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}本章のまとめ}{5}{section.2.4}%
 \contentsline {chapter}{\numberline {第3章}基盤技術}{6}{chapter.3}%
